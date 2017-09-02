@@ -10,7 +10,11 @@
 
   &__section {
     @include clearfix;
-    padding: 24px 22px 0 0;
+    padding-top: 26px;
+
+    @include mq-tablet {
+      margin-right: 22px
+    };
   }
 
   &__title {

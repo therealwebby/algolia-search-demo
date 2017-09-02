@@ -1,0 +1,25 @@
+.button {
+  float: left;
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+
+  &__link {
+    @include type-paragraph;
+    display: inline-block;
+    padding: 10px 54px;
+    border: 1px solid $color-sliver;
+    border-radius: 4px;
+    color: $color-gray;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      color: $color-sliver-chalice;
+      border-color: $color-alto;
+    }
+  }
+}

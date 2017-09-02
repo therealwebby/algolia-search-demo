@@ -1,0 +1,46 @@
+.results {
+  float: left;
+  width: 100%;
+
+  @include mq-tablet {
+    width: calc(100% - 182px);
+    padding: 26px 0 0 22px;
+  };
+
+  &__stats-bar {
+    float: left;
+    width: 100%;
+    position: relative;
+    height: 19px;
+    border-bottom: 1px solid $color-mercury;
+  }
+
+  &__count-text {
+    @include type-paragraph
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-right: 24px;
+    border-bottom: 2px solid $color-white;
+    color: $color-mine-shaft;
+  }
+
+  &__time-text {
+    @include type-note;
+  }
+
+  &__item {
+    float: left;
+    width: 100%;
+    margin-top: 18px;
+
+    &--first {
+      margin-top: 24px;
+    }
+  }
+
+  &__button {
+    float: left;
+    width: 100%;
+  }
+}

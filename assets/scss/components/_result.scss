@@ -1,0 +1,33 @@
+.result {
+  float: left;
+  width: 100%;
+
+  &__image-container {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 0 16px 0 0;
+    border-radius: 3px;
+    background-color: $color-mercury;
+  }
+
+  &__text-contianer {
+    float: left;
+  }
+
+  &__title {
+    @include type-heading;
+    margin-bottom: 6px;
+  }
+
+  &__rating {
+    @include type-paragraph;
+    margin-bottom: 6px;
+    color: $color-atomic-tangerine;
+  }
+
+  &__summary {
+    @include type-paragraph;
+    color: $color-sliver-chalice;
+  }
+}
