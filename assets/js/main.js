@@ -1,3 +1,9 @@
-$(function () {
-  console.log('Page loaded');
-});
+(function($) {
+  class HelloWorld {
+    constructor () {
+      console.log('Hello World')
+    }
+  }
+
+  var helloWorld = new HelloWorld;
+})(jQuery)
