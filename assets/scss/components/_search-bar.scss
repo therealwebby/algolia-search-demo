@@ -1,0 +1,30 @@
+.search-bar {
+  position: relative;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  background-color: $color-matisse;
+
+  &__container {
+    padding: 22px 25px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $color-alto;
+    border-radius: 3px;
+
+    &::placeholder {
+      @include type-paragraph;
+      font-size: 15px;
+      line-height: 15px;
+      color: $color-nobel;
+    }
+
+    &:focus {
+      box-shadow: 0 2px 6px 0 rgba(0,0,0,0.20);
+      outline: 0;
+    }
+  }
+}

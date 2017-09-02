@@ -1,0 +1,25 @@
+@mixin antialiasing {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin type-heading {
+  @include antialiasing;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+@mixin type-paragraph {
+  @include antialiasing;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@mixin type-note {
+  @include antialiasing;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}

@@ -13,8 +13,8 @@ gulp.task('serve', function() {
 });
 
 // Watching scss/less/html files
-gulp.task('watch', ['js', 'serve', 'sass'], function() {
-    gulp.watch('assets/scss/*.scss', ['sass']);
+gulp.task('watch', ['js', 'serve', 'sass', 'images'], function() {
+    gulp.watch('assets/scss/**/*.scss', ['sass']);
     gulp.watch('assets/js/*.js', ['js']);
     gulp.watch('*.html').on('change', browserSync.reload);
 });
@@ -36,6 +36,11 @@ gulp.task('sass', function() {
     }))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
+});
+
+gulp.task('images', function() {
+  return gulp.src('assets/images/*.{gif,jpg,png,svg}')
+      .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('default', ['serve']);
