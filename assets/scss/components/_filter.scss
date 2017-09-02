@@ -1,0 +1,82 @@
+.filter {
+  float: left;
+  width: 100%;
+
+  @include mq-tablet {
+    border-right: 1px solid $color-mercury;
+    width: 182px;
+    height: 100%;
+  };
+
+  &__section {
+    @include clearfix;
+    padding: 24px 22px 0 0;
+  }
+
+  &__title {
+    @include type-paragraph;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 12px;
+    color: $color-mine-shaft;
+  }
+
+  &__label {
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &--active {
+      background-color: $color-curious-blue;
+      cursor: default;
+    }
+  }
+
+  &__label-text {
+    @include type-label;
+    float: left;
+    color: $color-black;
+
+    .filter__label--active & {
+      color: $color-white
+    }
+  }
+
+  &__label-number {
+    @include type-label;
+    float: right;
+    color: $color-sliver-chalice;
+
+    .filter__label--active & {
+      color: $color-white
+    }
+  }
+
+  &__rating {
+    position: relative;
+    float: left;
+    width: 81px;
+    height: 15px;
+    margin: 0 10px 6px 10px;
+    background: url('../images/5-stars-empty.png');
+    overflow: hidden;
+    cursor: pointer;
+
+    @for $i from 1 through 5 {
+      &--#{$i} {
+        &:before {
+          content: url('../images/5-stars-full.png');
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 81px;
+          height: 15px;
+          left: -81px + ($i * 16);
+        }
+      }
+    }
+  }
+}
