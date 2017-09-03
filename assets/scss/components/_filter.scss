@@ -59,29 +59,4 @@
       color: $color-white
     }
   }
-
-  &__rating {
-    position: relative;
-    float: left;
-    width: 81px;
-    height: 15px;
-    margin: 0 10px 6px 10px;
-    background: url('../images/5-stars-empty.png');
-    overflow: hidden;
-    cursor: pointer;
-
-    @for $i from 1 through 5 {
-      &--#{$i} {
-        &:before {
-          content: url('../images/5-stars-full.png');
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 81px;
-          height: 15px;
-          left: -81px + ($i * 16);
-        }
-      }
-    }
-  }
 }

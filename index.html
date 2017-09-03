@@ -55,17 +55,17 @@
             </div>
             <div class="filter__section">
               <h3 class="filter__title">Rating</h3>
-              <span class="filter__rating filter__rating--0">
+              <span class="rating rating--0 rating--sidebar">
               </span>
-              <span class="filter__rating filter__rating--1">
+              <span class="rating rating--2 rating--sidebar">
               </span>
-              <span class="filter__rating filter__rating--2">
+              <span class="rating rating--4 rating--sidebar">
               </span>
-              <span class="filter__rating filter__rating--3">
+              <span class="rating rating--6 rating--sidebar">
               </span>
-              <span class="filter__rating filter__rating--4">
+              <span class="rating rating--8 rating--sidebar">
               </span>
-              <span class="filter__rating filter__rating--5">
+              <span class="rating rating--10 rating--sidebar">
               </span>
             </div>
             <div class="filter__section">
@@ -91,7 +91,7 @@
                 <div class="result__text-container">
                   <h1 class="result__title">{{result.name}}</h1>
                   <p class="result__rating">
-                    {{result.stars_count}} Rating <span class="result__summary">({{result.reviews_count}} reviews)</span>
+                    {{result.stars_count}} <span class="rating rating--{{roundRating result.stars_count}}" /></span> <span class="result__summary">({{result.reviews_count}} reviews)</span>
                   </p>
                   <p class="result__summary">
                     {{result.food_type}} | {{result.neighborhood}} | {{result.price_range}}
