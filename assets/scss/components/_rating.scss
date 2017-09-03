@@ -3,7 +3,8 @@
   position: relative;
   width: 81px;
   height: 15px;
-  background: url('../images/5-stars-empty.png');
+  background: url('../images/stars-icons.png');
+  background-size: 81px 30px;
   cursor: pointer;
 
   .filter__section--active & {
@@ -13,13 +14,16 @@
   @for $i from 1 through 10 {
     &--#{($i)} {
       &:before {
-        content: url('../images/5-stars-full.png');
+        content: '';
         position: absolute;
         overflow: hidden;
         top: 0;
         left: 0;
         height: 15px;
         width: ($i * 8.25px);
+        background: url('../images/stars-icons.png');
+        background-size: 81px 30px;
+        background-position: 0 15px;
       }
     }
   }
