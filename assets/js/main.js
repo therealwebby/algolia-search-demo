@@ -13,10 +13,10 @@ class App {
     this.registerHelpers();
     this.renderPageResults();
     this.registerEvents();
-    this._search('', undefined, true);
+    this._triggerSearch('', undefined, true);
   }
 
-  _search (value, filters={}, isRenderingSidebar=false) {
+  _triggerSearch (value, filters={}, isRenderingSidebar=false) {
     this.search.performSearch(
       value,
       filters,
@@ -30,17 +30,27 @@ class App {
 
   registerEvents () {
     $('#search-input').on('keyup', event => {
-      this._search(event.target.value);
+      this._triggerSearch(event.target.value);
     });
 
     $('.filter__label').on('click', event => {
-      this._search(undefined, {
+      this._triggerSearch(undefined, {
         'food_type': $(event.target).attr('data-value')
       });
 
       $('.filter__label--active').removeClass('filter__label--active');
       $(event.target).addClass('filter__label--active');
     });
+
+    $('#show-more').on('click', () => {
+      this.search.loadMore(
+        (error, content) => {
+          console.log('callback', content);
+          this.searchData = content;
+          this.renderPageResults();
+        }
+      );
+    })
   }
 
   registerHelpers () {
@@ -58,6 +68,7 @@ class App {
     const html = template(this.searchData);
 
     $('#result-container').empty().append(html);
+    this.registerEvents();
   }
 
   renderSidebar () {

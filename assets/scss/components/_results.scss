@@ -1,9 +1,11 @@
 .results {
   float: left;
   width: 100%;
+  overflow: scroll;
 
   @include mq-tablet {
     width: calc(100% - 182px);
+    max-height: 404px;
     padding: 26px 0 0 22px;
   };
 
