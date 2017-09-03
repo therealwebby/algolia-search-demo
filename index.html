@@ -20,37 +20,37 @@
         </div>
       </section>
       <section class="page__content">
-        <aside class="filter">
+        <aside id="filter-container" class="filter">
           <div class="filter__container">
             <div class="filter__section">
               <h3 class="filter__title">Cuisine/Food Type</h3>
-              <a class="filter__label">
+              <a class="filter__label" data-value="italian">
                 <span class="filter__label-text">Italian</span>
-                <span class="filter__label-number">70</span>
+                <span class="filter__label-number">{{facets.food_type.Italian}}</span>
               </a>
-              <a class="filter__label filter__label--active">
+              <a class="filter__label" data-value="american">
                 <span class="filter__label-text">American</span>
-                <span class="filter__label-number">47</span>
+                <span class="filter__label-number">{{facets.food_type.American}}</span>
               </a>
-              <a class="filter__label">
+              <a class="filter__label" data-value="californian">
                 <span class="filter__label-text">Californian</span>
-                <span class="filter__label-number">42</span>
+                <span class="filter__label-number">{{facets.food_type.Californian}}</span>
               </a>
-              <a class="filter__label">
+              <a class="filter__label" data-value="french">
                 <span class="filter__label-text">French</span>
-                <span class="filter__label-number">31</span>
+                <span class="filter__label-number">{{facets.food_type.French}}</span>
               </a>
-              <a class="filter__label">
+              <a class="filter__label" data-value="seafood">
                 <span class="filter__label-text">Seafood</span>
-                <span class="filter__label-number">29</span>
+                <span class="filter__label-number">{{facets.food_type.Seafood}}</span>
               </a>
-              <a class="filter__label">
+              <a class="filter__label" data-value="japanese">
                 <span class="filter__label-text">Japanese</span>
-                <span class="filter__label-number">27</span>
+                <span class="filter__label-number">{{facets.food_type.Japanese}}</span>
               </a>
-              <a class="filter__label">
+              <a class="filter__label" data-value="indian">
                 <span class="filter__label-text">Indian</span>
-                <span class="filter__label-number">19</span>
+                <span class="filter__label-number">{{facets.food_type.Indian}}</span>
               </a>
             </div>
             <div class="filter__section">
@@ -78,7 +78,7 @@
         </aside>
         <div id="result-container" class="results">
           <div class="results__stats-bar">
-            <h2 class="results__count-text">{{nbHits}} results found <span class="results__time-text">in {{toSeconds processingTimeMS}} seconds</span></h2>
+            <h2 class="results__count-text">{{#if nbHits}} {{nbHits}} {{else}} 0 {{/if}} results found <span class="results__time-text">in {{toSeconds processingTimeMS}} seconds</span></h2>
           </div>
           {{#each hits as |result|}}
             <div class="results__item">

@@ -1,47 +1,71 @@
 import Handlebars from 'handlebars';
 import $ from 'jquery';
 
-import Search from './shared/services/search';
+import Search from './shared/search';
 
 class App {
   constructor () {
     this.search = new Search;
     this.handlebars = Handlebars;
     this.resultContainerHtml = $('#result-container').html();
+    this.filterContainerHtml = $('#filter-container').html();
 
-    this.registerEvents();
     this.registerHelpers();
-    this.renderPage();
+    this.renderPageResults();
+    this.registerEvents();
+    this._search('', undefined, true);
+  }
+
+  _search (value, filters={}, isRenderingSidebar=false) {
+    this.search.performSearch(
+      value,
+      filters,
+      (error, content) => {
+        this.searchData = content;
+        this.renderPageResults();
+        isRenderingSidebar && this.renderSidebar();
+      }
+    )
   }
 
   registerEvents () {
     $('#search-input').on('keyup', event => {
-      this.search.performSearch(
-        event.target.value,
-        (error, content) => {
-          this.searchData = content;
-          this.renderPage();
-        }
-      )
+      this._search(event.target.value);
+    });
+
+    $('.filter__label').on('click', event => {
+      this._search(undefined, {
+        'food_type': $(event.target).attr('data-value')
+      });
+
+      $('.filter__label--active').removeClass('filter__label--active');
+      $(event.target).addClass('filter__label--active');
     });
   }
 
   registerHelpers () {
     this.handlebars.registerHelper('toSeconds', value => {
-      return value / 1000;
+      return value ? value / 1000 : 0;
     });
 
     this.handlebars.registerHelper('roundRating', value => {
-      console.log(value);
-      return Math.round(value * 2);
+      return value ? Math.round(value * 2) : 0;
     });
   }
 
-  renderPage () {
+  renderPageResults () {
     const template = this.handlebars.compile(this.resultContainerHtml);
     const html = template(this.searchData);
 
     $('#result-container').empty().append(html);
+  }
+
+  renderSidebar () {
+    const template = this.handlebars.compile(this.filterContainerHtml);
+    const html = template(this.searchData);
+
+    $('#filter-container').empty().append(html);
+    this.registerEvents();
   }
 }
 

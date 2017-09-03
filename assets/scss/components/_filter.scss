@@ -31,11 +31,16 @@
     float: left;
     width: 100%;
     padding: 0 10px;
+    margin-bottom: 1px;
     border-radius: 3px;
     cursor: pointer;
 
-    &--active {
+    &--active,
+    &:hover {
       background-color: $color-curious-blue;
+    }
+
+    &--active {
       cursor: default;
     }
   }
@@ -44,8 +49,10 @@
     @include type-label;
     float: left;
     color: $color-black;
+    pointer-events: none;
 
-    .filter__label--active & {
+    .filter__label--active &,
+    .filter__label:hover & {
       color: $color-white
     }
   }
@@ -54,8 +61,10 @@
     @include type-label;
     float: right;
     color: $color-sliver-chalice;
+    pointer-events: none;
 
-    .filter__label--active & {
+    .filter__label--active &,
+    .filter__label:hover & {
       color: $color-white
     }
   }
