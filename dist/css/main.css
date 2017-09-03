@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -66,9 +67,10 @@ table {
   .button__link {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     display: inline-block;
     padding: 10px 54px;
     border: 1px solid #CCCCCC;
@@ -100,9 +102,10 @@ table {
   .filter__header {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     padding: 14px 0;
     border-bottom: 1px solid #E6E6E6;
     text-align: center;
@@ -169,15 +172,17 @@ table {
   .filter__title {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     display: block;
     float: left;
     width: 100%;
     margin-bottom: 12px;
-    color: #333333; }
-  /* line 92, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+    color: #333333;
+    font-weight: 600; }
+  /* line 93, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
   .filter__label {
     float: left;
     width: 100%;
@@ -186,41 +191,43 @@ table {
     border-radius: 3px;
     cursor: pointer;
     user-select: none; }
-    /* line 101, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+    /* line 102, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
     .filter__label--active, .filter__label:hover {
       background-color: #2897C5; }
-    /* line 106, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+    /* line 107, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
     .filter__label--active {
       cursor: default; }
     @media (min-width: 768px) {
-      /* line 92, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+      /* line 93, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
       .filter__label {
         padding: 0 10px; } }
-  /* line 115, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+  /* line 116, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
   .filter__label-text {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     line-height: 20px;
+    font-weight: 400;
     float: left;
     color: #000000;
     pointer-events: none; }
-    /* line 121, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+    /* line 122, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
     .filter__label--active .filter__label-text,
     .filter__label:hover .filter__label-text {
       color: #FFFFFF; }
-  /* line 127, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+  /* line 128, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
   .filter__label-number {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     line-height: 20px;
+    font-weight: 400;
     float: right;
     color: #A9A9A9;
     pointer-events: none; }
-    /* line 133, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
+    /* line 134, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_filter.scss */
     .filter__label--active .filter__label-number,
     .filter__label:hover .filter__label-number {
       color: #FFFFFF; }
@@ -305,105 +312,136 @@ table {
   position: relative;
   width: 81px;
   height: 15px;
-  background: url("../images/5-stars-empty.png");
+  background: url("../images/stars-icons.png");
+  background-size: 81px 30px;
   cursor: pointer; }
-  /* line 9, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+  /* line 10, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .filter__section--active .rating {
     opacity: 0.4; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--1:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 8.25px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 8.25px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--2:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 16.5px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 16.5px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--3:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 24.75px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 24.75px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--4:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 33px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 33px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--5:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 41.25px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 41.25px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--6:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 49.5px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 49.5px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--7:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 57.75px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 57.75px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--8:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 66px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 66px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--9:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 74.25px; }
-  /* line 15, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 74.25px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 16, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--10:before {
-    content: url("../images/5-stars-full.png");
+    content: '';
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
     height: 15px;
-    width: 82.5px; }
-  /* line 27, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+    width: 82.5px;
+    background: url("../images/stars-icons.png");
+    background-size: 81px 30px;
+    background-position: 0 15px; }
+  /* line 31, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--active {
     opacity: 1 !important; }
-  /* line 31, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
+  /* line 35, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_rating.scss */
   .rating--sidebar {
     float: left;
     margin: 0 10px 6px 10px; }
@@ -431,26 +469,29 @@ table {
   .result__title {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 19px;
+    font-weight: 600;
     margin-bottom: 6px; }
   /* line 28, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_result.scss */
   .result__rating {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     margin-bottom: 6px;
     color: #FFAB66; }
   /* line 34, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_result.scss */
   .result__summary {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     color: #A9A9A9; }
 
 /* line 1, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_results.scss */
@@ -464,7 +505,7 @@ table {
     .results {
       width: calc(100% - 182px);
       max-height: 404px;
-      padding: 26px 0 0 22px; } }
+      padding: 22px 0 0 22px; } }
   /* line 13, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_results.scss */
   .results__stats-bar {
     float: left;
@@ -476,9 +517,10 @@ table {
   .results__count-text {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 18px;
+    font-weight: 400;
     position: absolute;
     top: 0;
     left: 0;
@@ -489,9 +531,10 @@ table {
   .results__time-text {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
-    line-height: 16px; }
+    line-height: 16px;
+    font-weight: 400; }
   /* line 35, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_results.scss */
   .results__item {
     float: left;
@@ -525,9 +568,10 @@ table {
     .search-bar__input::placeholder {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       line-height: 18px;
+      font-weight: 400;
       font-size: 15px;
       line-height: 15px;
       color: #B3B3B3; }
