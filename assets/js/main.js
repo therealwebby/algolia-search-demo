@@ -56,7 +56,7 @@ class App {
         this._renderPageResults();
         isRenderingSidebar && this._renderSidebar();
       }
-    )
+    );
   }
 
   _registerEvents () {
@@ -65,6 +65,8 @@ class App {
     });
 
     $('#filter-header').off().on('click', event => {
+      $(event.target)
+        .toggleClass('filter__header--open');
       $('.filter__container')
         .toggleClass('filter__container--open');
     });
@@ -79,7 +81,7 @@ class App {
     });
 
     $('.filter__label').off().on('click', event => {
-      this._labelClickHandler(event)
+      this._labelClickHandler(event);
     });
 
     $('.rating--sidebar').off().on('click', event => {
@@ -89,7 +91,7 @@ class App {
 
   _expandDiscoverCards (paymentData) {
     if (paymentData === 'discover') {
-      return ['discover', 'Diners Club', 'Carte Blanche']
+      return ['discover', 'Diners Club', 'Carte Blanche'];
     }
 
     return paymentData;

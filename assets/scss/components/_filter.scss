@@ -29,6 +29,13 @@
       cursor: pointer;
     }
 
+    &.filter__header--open {
+      &:after {
+        top: 5px;
+        transform: rotateX(180deg);
+      }
+    }
+
     @include mq-tablet {
       display: none
     };
@@ -36,6 +43,7 @@
 
   &__header-text {
     display: inline-block;
+    pointer-events: none;
     cursor: pointer;
   }
 

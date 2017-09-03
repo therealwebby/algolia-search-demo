@@ -4,6 +4,7 @@ import _ from 'lodash';
 export default class Search {
   constructor (locationService) {
     this.locationService = locationService;
+
     this.client = algoliasearch('KJFGZM4A60', '72047bd135d6775dc2f140ef22edf8fb');
     this.index = this.client.initIndex('restaurants');
 
@@ -20,7 +21,7 @@ export default class Search {
   _isNewFilter (filters) {
     return filters.food_type && (filters.food_type !== this.currentSearch.facetFilters.food_type) ||
       filters.payment_options && (filters.payment_options !== this.currentSearch.facetFilters.payment_options) ||
-      filters.stars_count && (filters.stars_count !== this.currentSearch.numericFilters.stars_count)
+      filters.stars_count && (filters.stars_count !== this.currentSearch.numericFilters.stars_count);
   }
 
   _buildFilterString (type) {
@@ -30,10 +31,10 @@ export default class Search {
       .map(key => {
           if (_.isArray(this.currentSearch[type][key])) {
             this.currentSearch[type][key].forEach(item => {
-              parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${item}`
+              parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${item}`;
             })
           } else {
-            parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${this.currentSearch[type][key]}`
+            parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${this.currentSearch[type][key]}`;
           }
         }
       );
