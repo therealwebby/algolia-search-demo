@@ -27,6 +27,8 @@ function mergeDataSets() {
     return Object.assign({}, item, matchingItem);
   });
 
+  combinedData.forEach(item => item.stars_count = parseFloat(item.stars_count))
+
   fs.writeFileSync(
       path.join(
         __dirname, '../resources/dataset/restaurants_complete.json'

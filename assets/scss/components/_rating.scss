@@ -6,6 +6,10 @@
   background: url('../images/5-stars-empty.png');
   cursor: pointer;
 
+  .filter__section--active & {
+    opacity: 0.4
+  }
+
   @for $i from 1 through 10 {
     &--#{($i)} {
       &:before {
@@ -18,6 +22,10 @@
         width: ($i * 8.25px);
       }
     }
+  }
+
+  &--active {
+    opacity: 1 !important;
   }
 
   &--sidebar {

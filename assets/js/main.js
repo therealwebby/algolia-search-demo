@@ -13,13 +13,14 @@ class App {
     this.registerHelpers();
     this.renderPageResults();
     this.registerEvents();
-    this._triggerSearch('', undefined, true);
+    this._performSearch('', undefined, undefined, true);
   }
 
-  _triggerSearch (value, filters={}, isRenderingSidebar=false) {
+  _performSearch (value, filters={}, numericFilters={}, isRenderingSidebar=false) {
     this.search.performSearch(
       value,
       filters,
+      numericFilters,
       (error, content) => {
         this.searchData = content;
         this.renderPageResults();
@@ -29,23 +30,41 @@ class App {
   }
 
   registerEvents () {
-    $('#search-input').on('keyup', event => {
-      this._triggerSearch(event.target.value);
+    $('#search-input').off().on('keyup', event => {
+      this._performSearch(event.target.value);
     });
 
-    $('.filter__label').on('click', event => {
-      this._triggerSearch(undefined, {
-        'food_type': $(event.target).attr('data-value')
-      });
+    $('.filter__label').off().on('click', event => {
+      const filterObject = {}
 
-      $('.filter__label--active').removeClass('filter__label--active');
+      if ($(event.target).attr('data-food')) {
+        filterObject.food_type = $(event.target).attr('data-food');
+      };
+
+      if ($(event.target).attr('data-payment')) {
+        filterObject.payment_options = $(event.target).attr('data-payment');
+      }
+
+      this._performSearch(undefined, filterObject);
+
+      $(event.target).parent().children('.filter__label--active').removeClass('filter__label--active');
       $(event.target).addClass('filter__label--active');
     });
 
-    $('#show-more').on('click', () => {
+    $('.rating--sidebar').off().on('click', event => {
+      this._performSearch(undefined, undefined, {
+        stars_count: `>= ${$(event.target).attr('data-rating')}`
+      });
+
+      $(event.target).parent().children('.rating--active').removeClass('rating--active');
+      $(event.target).parent().removeClass('filter__section--active');
+      $(event.target).parent().addClass('filter__section--active');
+      $(event.target).addClass('rating--active');
+    })
+
+    $('#show-more').off().on('click', () => {
       this.search.loadMore(
         (error, content) => {
-          console.log('callback', content);
           this.searchData = content;
           this.renderPageResults();
         }

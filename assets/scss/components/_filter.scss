@@ -16,6 +16,10 @@
     @include mq-tablet {
       margin-right: 22px
     };
+
+    &:last-child {
+      padding-bottom: 26px;
+    }
   }
 
   &__title {
