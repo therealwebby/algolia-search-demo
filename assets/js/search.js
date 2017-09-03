@@ -1,7 +1,8 @@
 import algoliasearch from 'algoliasearch';
 
 export default class Search {
-  constructor () {
+  constructor (locationService) {
+    this.locationService = locationService;
     this.client = algoliasearch('KJFGZM4A60', '72047bd135d6775dc2f140ef22edf8fb');
     this.index = this.client.initIndex('restaurants');
 
@@ -49,7 +50,9 @@ export default class Search {
         facets: Object.keys(this.currentSearch.facetFilters),
         attributesToRetrieve: '*',
         facetFilters: this._buildFilterString('facetFilters'),
-        numericFilters: this._buildFilterString('numericFilters')
+        numericFilters: this._buildFilterString('numericFilters'),
+        aroundLatLng: this.locationService.currentLocation && `${this.locationService.currentLocation.lat}, ${this.locationService.currentLocation.lng}`,
+        aroundLatLngViaIP: true
       },
       (error, content) => {
         cb(error, content);
