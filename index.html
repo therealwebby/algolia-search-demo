@@ -15,7 +15,7 @@
       <section class="page__search">
         <div class="search-bar">
           <div class="search-bar__container">
-            <input class="search-bar__input" type="text" placeholder="Search for Restaurants by Name, Cuisine, Location" />
+            <input id="search-input" class="search-bar__input" type="text" placeholder="Search for Restaurants by Name, Cuisine, Location" />
           </div>
         </div>
       </section>
@@ -76,46 +76,30 @@
             </div>
           </div>
         </aside>
-        <div class="results">
+        <div id="result-container" class="results">
           <div class="results__stats-bar">
-            <h2 class="results__count-text">34 results found <span class="results__time-text">in 0.002 seconds</span></h2>
+            <h2 class="results__count-text">{{nbHits}} results found <span class="results__time-text">in {{toSeconds processingTimeMS}} seconds</span></h2>
           </div>
-          <div class="results__item results__item--first">
-            <div class="result">
-              <div class="result__image-container">
-                <!-- <img class="result__image" /> -->
-              </div>
-              <div class="result__text-container">
-                <h1 class="result__title">Anchor and Hope</h1>
-                <p class="result__rating">4.2 Rating <span class="result__summary">(1897 reviews)</span></p>
-                <p class="result__summary">American &amp; Seafood | SOMA | $31 to $50</p>
+          {{#each hits as |result|}}
+            <div class="results__item">
+              <div class="result">
+                <div class="result__image-container">
+                  {{#if result.image_url}}
+                    <img class="result__image" src="{{result.image_url}}" />
+                  {{/if}}
+                </div>
+                <div class="result__text-container">
+                  <h1 class="result__title">{{result.name}}</h1>
+                  <p class="result__rating">
+                    {{result.stars_count}} Rating <span class="result__summary">({{result.reviews_count}} reviews)</span>
+                  </p>
+                  <p class="result__summary">
+                    {{result.food_type}} | {{result.neighborhood}} | {{result.price_range}}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="results__item">
-            <div class="result">
-              <div class="result__image-container">
-                <!-- <img class="result__image" /> -->
-              </div>
-              <div class="result__text-container">
-                <h1 class="result__title">Anchor and Hope</h1>
-                <p class="result__rating">4.2 Rating <span class="result__summary">(1897 reviews)</span></p>
-                <p class="result__summary">American &amp; Seafood | SOMA | $31 to $50</p>
-              </div>
-            </div>
-          </div>
-          <div class="results__item">
-            <div class="result">
-              <div class="result__image-container">
-                <!-- <img class="result__image" /> -->
-              </div>
-              <div class="result__text-container">
-                <h1 class="result__title">Anchor and Hope</h1>
-                <p class="result__rating">4.2 Rating <span class="result__summary">(1897 reviews)</span></p>
-                <p class="result__summary">American &amp; Seafood | SOMA | $31 to $50</p>
-              </div>
-            </div>
-          </div>
+          {{/each}}
           <div class="results__button">
             <div class="button">
               <a class="button__link">
@@ -128,9 +112,6 @@
     </div>
   </div>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
-  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
   <script src="dist/js/main.js"></script>
   </body>
 </html>

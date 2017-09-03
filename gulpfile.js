@@ -3,7 +3,7 @@ var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
-var less = require('gulp-less-sourcemap');
+var browserify = require('gulp-browserify');
 
 // Static Server
 gulp.task('serve', function() {
@@ -15,13 +15,16 @@ gulp.task('serve', function() {
 // Watching scss/less/html files
 gulp.task('watch', ['js', 'serve', 'sass', 'images'], function() {
     gulp.watch('assets/scss/**/*.scss', ['sass']);
-    gulp.watch('assets/js/*.js', ['js']);
+    gulp.watch('assets/js/**/*.js', ['js']);
     gulp.watch('*.html').on('change', browserSync.reload);
 });
 
 gulp.task('js', function () {
   return gulp.src('assets/js/main.js')
     .pipe(sourcemaps.init())
+    .pipe(browserify({
+      insertGlobals : true
+    }))
     .pipe(babel())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/js'));
