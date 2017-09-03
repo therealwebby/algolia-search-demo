@@ -1,49 +1,18 @@
-import Handlebars from 'handlebars';
 import $ from 'jquery';
 
 import SearchService from './search';
 import LocationService from './location';
+import TemplaingService from './templating'
 
 class App {
   constructor () {
-    this.handlebars = Handlebars;
     this.locationService = new LocationService;
     this.searchService = new SearchService(this.locationService);
-
-    this.resultContainerHtml = $('#result-container').html();
-    this.filterContainerHtml = $('#filter-container').html();
+    this.templaingService = new TemplaingService;
 
     this.locationService.getUserLocation();
 
-    this._registerHelpers();
-    this._renderPageResults();
     this._performSearch('', undefined, undefined, true);
-  }
-
-  _registerHelpers () {
-    this.handlebars.registerHelper('toSeconds', value => {
-      return value ? value / 1000 : 0;
-    });
-
-    this.handlebars.registerHelper('roundRating', value => {
-      return value ? Math.round(value * 2) : 0;
-    });
-  }
-
-  _renderPageResults () {
-    const template = this.handlebars.compile(this.resultContainerHtml);
-    const html = template(this.searchData);
-
-    $('#result-container').empty().append(html);
-    this._registerEvents();
-  }
-
-  _renderSidebar () {
-    const template = this.handlebars.compile(this.filterContainerHtml);
-    const html = template(this.searchData);
-
-    $('#filter-container').empty().append(html);
-    this._registerEvents();
   }
 
   _performSearch (value, filters={}, numericFilters={}, isRenderingSidebar=false) {
@@ -53,8 +22,10 @@ class App {
       numericFilters,
       (error, content) => {
         this.searchData = content;
-        this._renderPageResults();
-        isRenderingSidebar && this._renderSidebar();
+
+        this.templaingService.renderPageResults(this.searchData);
+        isRenderingSidebar && this.templaingService.renderSidebar(this.searchData);
+        this._registerEvents();
       }
     );
   }
@@ -75,7 +46,8 @@ class App {
       this.searchService.loadMore(
         (error, content) => {
           this.searchData = content;
-          this._renderPageResults();
+          this.templaingService.renderPageResults(this.searchData);
+          this._registerEvents();
         }
       );
     });
