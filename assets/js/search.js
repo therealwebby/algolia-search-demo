@@ -1,4 +1,5 @@
 import algoliasearch from 'algoliasearch';
+import _ from 'lodash';
 
 export default class Search {
   constructor (locationService) {
@@ -13,7 +14,7 @@ export default class Search {
       },
       numericFilters: {},
       hitsPerPage: 3
-    }
+    };
   }
 
   _isNewFilter (filters) {
@@ -27,7 +28,13 @@ export default class Search {
 
     Object.keys(this.currentSearch[type])
       .map(key => {
-          parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${this.currentSearch[type][key]}`
+          if (_.isArray(this.currentSearch[type][key])) {
+            this.currentSearch[type][key].forEach(item => {
+              parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${item}`
+            })
+          } else {
+            parsedFilters = `${parsedFilters}${parsedFilters && ', '}${type === 'numericFilters' ? key : key+':'} ${this.currentSearch[type][key]}`
+          }
         }
       );
 
@@ -35,7 +42,7 @@ export default class Search {
   }
 
   performSearch (queryString='', facetFilters={}, numericFilters={}, cb) {
-    this.currentSearch.query = queryString || this.currentSearch.query;
+    this.currentSearch.query = queryString;
 
     if (this._isNewFilter(facetFilters) || this._isNewFilter(numericFilters)) {
       this.currentSearch.facetFilters = Object.assign({}, this.currentSearch.facetFilters, facetFilters);

@@ -64,13 +64,10 @@ class App {
       this._performSearch(event.target.value);
     });
 
-    $('.filter__label').off().on('click', event => {
-      this._labelClickHandler(event)
+    $('#filter-header').off().on('click', event => {
+      $('.filter__container')
+        .toggleClass('filter__container--open');
     });
-
-    $('.rating--sidebar').off().on('click', event => {
-      this._ratingsClickHandler(event);
-    })
 
     $('#show-more').off().on('click', () => {
       this.searchService.loadMore(
@@ -79,18 +76,37 @@ class App {
           this._renderPageResults();
         }
       );
+    });
+
+    $('.filter__label').off().on('click', event => {
+      this._labelClickHandler(event)
+    });
+
+    $('.rating--sidebar').off().on('click', event => {
+      this._ratingsClickHandler(event);
     })
   }
 
-  _labelClickHandler(event) {
-    const filterObject = {}
+  _expandDiscoverCards (paymentData) {
+    if (paymentData === 'discover') {
+      return ['discover', 'Diners Club', 'Carte Blanche']
+    }
 
-    if ($(event.target).attr('data-food')) {
-      filterObject.food_type = $(event.target).attr('data-food');
+    return paymentData;
+  }
+
+  _labelClickHandler (event) {
+    const foodTypeData = $(event.target).attr('data-food');
+    let paymentData = $(event.target).attr('data-payment');
+    const filterObject = {};
+
+    if (foodTypeData) {
+      filterObject.food_type = foodTypeData;
     };
 
-    if ($(event.target).attr('data-payment')) {
-      filterObject.payment_options = $(event.target).attr('data-payment');
+    if (paymentData) {
+      paymentData = this._expandDiscoverCards(paymentData);
+      filterObject.payment_options = paymentData;
     }
 
     this._performSearch(undefined, filterObject);
@@ -99,7 +115,7 @@ class App {
     $(event.target).addClass('filter__label--active');
   }
 
-  _ratingsClickHandler(event) {
+  _ratingsClickHandler (event) {
     this._performSearch(undefined, undefined, {
       stars_count: `>= ${$(event.target).attr('data-rating')}`
     });
