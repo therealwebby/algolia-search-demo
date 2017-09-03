@@ -1,0 +1,15 @@
+{
+  "name": "combine-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "combine-data.js",
+  "scripts": {
+    "combine": "node ./combine-data.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvjson": "^4.3.4"
+  }
+}
