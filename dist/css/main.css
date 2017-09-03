@@ -560,11 +560,17 @@ table {
     padding: 22px 25px; }
   /* line 12, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_search-bar.scss */
   .search-bar__input {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
     width: 100%;
     padding: 12px;
     border: 1px solid #DDDDDD;
     border-radius: 3px; }
-    /* line 18, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_search-bar.scss */
+    /* line 19, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_search-bar.scss */
     .search-bar__input::placeholder {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
@@ -575,7 +581,7 @@ table {
       font-size: 15px;
       line-height: 15px;
       color: #B3B3B3; }
-    /* line 25, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_search-bar.scss */
+    /* line 26, /Users/alexwebb/Sites/alogia-search/assets/scss/components/_search-bar.scss */
     .search-bar__input:focus {
       box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
       outline: 0; }
