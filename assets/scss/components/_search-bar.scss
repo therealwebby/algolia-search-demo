@@ -10,6 +10,7 @@
   }
 
   &__input {
+    @include type-paragraph;
     width: 100%;
     padding: 12px;
     border: 1px solid $color-alto;
