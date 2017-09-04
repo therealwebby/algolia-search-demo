@@ -9,7 +9,7 @@ Cheers, George
 
 Hi George,
 
-Thanks for getting in touch, more than happy to try and help you out.
+Thanks for getting in touch, more than happy to help you out.
 
 To help clarify, records are individual items of data. This is the information that users want to find, it comes directly from your database.
 
