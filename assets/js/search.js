@@ -5,7 +5,7 @@ export default class Search {
   constructor (locationService) {
     this.locationService = locationService;
 
-    this.client = algoliasearch('KJFGZM4A60', '72047bd135d6775dc2f140ef22edf8fb');
+    this.client = algoliasearch('VYLEWMPKEZ', '8940a18fde155adf3f74b0912c267aa4');
     this.index = this.client.initIndex('restaurants');
 
     this.currentSearch = {
