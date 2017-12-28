@@ -5,4 +5,4 @@
 ##### To build
   `npm run build`
 
-Note: The provided dataset has been created using the https://github.com/sosedoff/opentable project.
+Note: The provided dataset has been created using the https://github.com/sosedoff/opentable project.  
